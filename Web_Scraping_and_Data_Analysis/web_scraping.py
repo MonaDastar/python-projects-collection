@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # URL of the bookstore website
-url = 'http://books.toscrape.com/'
+url = 'https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html'
 
 # Send an HTTP request to the URL
 response = requests.get(url)
@@ -16,7 +16,7 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.text, 'html.parser')
 
     # Extract information about books (hypothetical example)
-    book_titles = [title.text for title in soup.find_all('h2', class_='book-title')]
+    book_titles = [title.text for title in soup.find_all('h1', class_='book-title')]
     book_authors = [author.text for author in soup.find_all('p', class_='book-author')]
     book_prices = [price.text for price in soup.find_all('span', class_='book-price')]
 
